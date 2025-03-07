@@ -1,0 +1,17 @@
+package view
+
+import (
+    "main/view/layout"
+    "main/model"
+)
+
+templ Fortune(fortune model.Fortune) {
+    @layout.Base() {
+        <div class="fortune-display">
+            { fortune.Body }
+        </div>
+        <div style="text-align: center;">
+            <a href="/" class="btn">Back to Jars</a>
+        </div>
+    }
+}

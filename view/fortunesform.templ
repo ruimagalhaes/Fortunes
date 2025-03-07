@@ -1,0 +1,29 @@
+package view
+
+import (
+    "main/view/layout"
+    "main/model"
+)
+
+templ FortunesForm(kind model.FortuneKind) {
+    @layout.Base() {
+        <div class="fortune-form">
+            <form action={ templ.SafeURL("/fortunes") } method="POST">
+                if kind == model.KindMemory {
+                    <div class="form-group">
+                        <label for="memory">✨ Write Your Memory ✨</label>
+                        <textarea id="memory" name="memory" required placeholder="Share a special memory..."></textarea>
+                    </div>
+                } else if kind == model.KindWish {
+                    <div class="form-group">
+                        <label for="wish">✨ Make a Wish ✨</label>
+                        <textarea id="wish" name="wish" required placeholder="What do you wish for..."></textarea>
+                    </div>
+                }
+                <button type="submit" class="btn">
+                    { "Save Fortune" }
+                </button>
+            </form>
+        </div>
+    }
+}
