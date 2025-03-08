@@ -28,12 +28,14 @@ templ FortuneLists(memories []model.Fortune, wishes []model.Fortune, opened []mo
                 <a href="/fortunes/form?kind=wish" class="btn wishes-btn">Add Wish</a>
             </div>
         </div>
-        <div class="opened-fortunes">
-            <ul>
-                for _, fortune := range opened {
-                    <li><a href={templ.SafeURL("/fortunes/" + fortune.GetStrId())}>{ fortune.GetBody() }</a></li>
-                }
-            </ul>
-        </div>
+        if len(opened) > 0 { 
+            <div class="opened-fortunes">
+                <ul>
+                    for _, fortune := range opened {
+                        <li><a href={templ.SafeURL("/fortunes/" + fortune.GetStrId())}>{ fortune.Body }</a></li>
+                    }
+                </ul>
+            </div>
+        }
     }
 }

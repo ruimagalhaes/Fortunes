@@ -135,10 +135,3 @@ func (a *Fortune) GetTitle() string {
 	}
 	return fmt.Sprintf("🕰️ Memory %d", a.Id)
 }
-
-func (a *Fortune) GetBody() string {
-	if a.Kind == KindWish {
-		return "💫 " + a.Body
-	}
-	return "🕰️ " + a.Body
-}
