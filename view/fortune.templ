@@ -7,10 +7,10 @@ import (
 
 templ Fortune(fortune model.Fortune) {
     @layout.Base() {
-        <div class="fortune-display">
+        <div>
             { fortune.Body }
         </div>
-        <div style="text-align: center;">
+        <div>
             <a href="/" class="btn">Back to Jars</a>
         </div>
     }

@@ -1,0 +1,18 @@
+package view
+
+import (
+    "main/view/layout"
+    "main/model"
+)
+
+templ FortuneOpenedList(fortunes []model.Fortune) {
+    @layout.Base() {
+        <div>
+            <ul>
+                for _, fortune := range fortunes {
+                    <li><a href={templ.SafeURL("/fortunes/" + fortune.GetStrId())}>{ fortune.Body }</a></li>
+                }
+            </ul>
+        </div>
+    }
+}

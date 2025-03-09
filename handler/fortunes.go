@@ -19,19 +19,25 @@ func (h FortunesHandler) HandleGetFortuneList(c echo.Context) error {
 	if !ok {
 		return fmt.Errorf("unable to get database")
 	}
-	memories, err := model.GetMemories(database)
-	if err != nil {
-		return err
+	opened := c.QueryParam("opened") == "true"
+
+	if opened {
+		openedFortunes, err := model.GetOpened(database)
+		if err != nil {
+			return err
+		}
+		return render(c, view.FortuneOpenedList(openedFortunes))
+	} else {
+		memories, err := model.GetMemories(database)
+		if err != nil {
+			return err
+		}
+		wishes, err := model.GetWishes(database)
+		if err != nil {
+			return err
+		}
+		return render(c, view.FortuneList(memories, wishes))
 	}
-	wishes, err := model.GetWishes(database)
-	if err != nil {
-		return err
-	}
-	opened, err := model.GetOpened(database)
-	if err != nil {
-		return err
-	}
-	return render(c, view.FortuneLists(memories, wishes, opened))
 }
 
 func (h FortunesHandler) HandleGetFortune(c echo.Context) error {

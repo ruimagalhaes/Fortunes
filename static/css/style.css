@@ -1,299 +1,57 @@
-/* Softer 90s Style! */
+/* Clean Modern Style */
+/*@font-face {
+  font-family: 'StolzlDisplay';
+  src: url('/static/fonts/StolzlDisplay-Medium.woff2') format('woff2'),
+       url('/static/fonts/StolzlDisplay-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}*/
+
 body {
-  background: #2b2640;
-  font-family: "Comic Sans MS", cursive;
-  color: #e8e6f0;
   margin: 0;
-  padding: 20px;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  background: #352f54;
-  border: 3px solid #c17eef;
-  box-shadow: 8px 8px 0 #7eafef;
-  padding: 20px;
-  border-radius: 8px;
-  position: relative;
-}
-
-.container::before {
-  content: '';
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
-  background: linear-gradient(45deg, #ef7e7e, #efb77e, #efef7e, #7eef7e, #7e7eef, #b77eef, #ef7eb7);
-  opacity: 0.3;
-  z-index: -1;
-  border-radius: 12px;
-}
-
-.lists-container {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 30px;
-}
-
-.fortune-list {
-  flex: 1;
-  background: #2b2640;
-  border: 2px solid #7eafef;
-  padding: 20px;
-  border-radius: 8px;
-  position: relative;
   overflow: hidden;
+  position: relative;
+  height: 100vh;
+  background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
 }
 
-.fortune-list::after {
+/* Create static stars using a pseudo-element */
+body::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(to right, #ef7e7e, #efb77e, #efef7e, #7eef7e, #7e7eef, #b77eef, #ef7eb7);
-  opacity: 0.6;
-}
-
-h2 {
-  color: #c17eef;
-  text-align: center;
-  text-transform: uppercase;
-  text-shadow: 1px 1px #7eafef;
-  margin-bottom: 20px;
-  font-size: 24px;
-  letter-spacing: 2px;
-  animation: softRainbow 3s linear infinite;
-}
-
-@keyframes softRainbow {
-  0% { color: #ef7e7e; }
-  15% { color: #efb77e; }
-  30% { color: #efef7e; }
-  45% { color: #7eef7e; }
-  60% { color: #7e7eef; }
-  75% { color: #b77eef; }
-  90% { color: #ef7eb7; }
-  100% { color: #ef7e7e; }
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-li {
-  margin-bottom: 10px;
-  border-bottom: 2px dashed #7eafef;
-  padding-bottom: 10px;
-}
-
-a {
-  color: #7eafef;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-a:hover {
-  color: #c17eef;
-  text-decoration: none;
-  animation: gentlePulse 1.5s infinite;
-}
-
-@keyframes gentlePulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.7; }
-  100% { opacity: 1; }
-}
-
-.btn {
-  display: inline-block;
-  color: #fff;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 6px;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-top: 15px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.memories-btn {
-  background: #7eafef;
-  box-shadow: 0 4px 0 #5d8ed8;
-}
-
-.memories-btn:hover {
-  background: #9bc5f5;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 0 #5d8ed8;
-}
-
-.memories-btn:active {
-  transform: translateY(2px);
-  box-shadow: 0 2px 0 #5d8ed8;
-}
-
-.wishes-btn {
-  background: #c17eef;
-  box-shadow: 0 4px 0 #a05dd8;
-}
-
-.wishes-btn:hover {
-  background: #d19ef5;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 0 #a05dd8;
-}
-
-.wishes-btn:active {
-  transform: translateY(2px);
-  box-shadow: 0 2px 0 #a05dd8;
-}
-
-.opened-fortunes {
-  background: #2b2640;
-  border: 2px solid #c17eef;
-  padding: 20px;
-  border-radius: 8px;
-  margin-top: 30px;
-  position: relative;
-}
-
-.opened-fortunes::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, transparent 48%, #c17eef 49%, #c17eef 51%, transparent 52%);
-  background-size: 10px 10px;
-  opacity: 0.05;
-  pointer-events: none;
-}
-
-.fortune-form {
-  background: #2b2640;
-  border: 2px solid #7eafef;
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 600px;
-  margin: 0 auto;
-  position: relative;
-}
-
-.fortune-form::after {
-  content: '';
-  position: absolute;
+  right: 0;
   bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(to right, #ef7e7e, #efb77e, #efef7e, #7eef7e, #7e7eef, #b77eef, #ef7eb7);
-  opacity: 0.6;
+  pointer-events: none; 
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 40px 70px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 50px 160px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 130px 80px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 160px 120px, #ffffff, rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  opacity: 0.5;
 }
 
-.form-group {
-  margin-bottom: 20px;
-}
-
-label {
-  display: block;
-  color: #c17eef;
-  font-size: 20px;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-}
-
-textarea {
-  width: 100%;
-  min-height: 200px;
-  background: #352f54;
-  border: 2px solid #7eafef;
-  color: #e8e6f0;
-  padding: 10px;
-  font-family: "Comic Sans MS", cursive;
-  font-size: 16px;
-  resize: vertical;
-  border-radius: 6px;
-}
-
-textarea:focus {
-  outline: none;
-  border-color: #c17eef;
-  box-shadow: 0 0 10px rgba(193, 126, 239, 0.3);
-}
-
-.fortune-display {
-  background: #2b2640;
-  border: 2px solid #c17eef;
-  padding: 20px;
-  margin: 20px auto;
-  max-width: 600px;
-  text-align: center;
-  font-size: 20px;
-  position: relative;
-  overflow: hidden;
-  border-radius: 8px;
-}
-
-.fortune-display::before {
-  content: '';
+.bouncing-element {
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
-  transform: rotate(45deg);
-  animation: gentleShine 4s infinite;
+  user-select: none;
+  background: #ffffff;
 }
 
-.fortune-list.memories {
-  border-color: #7eafef;
-}
-
-.fortune-list.memories h2 {
-  color: #7eafef;
-  text-shadow: 1px 1px rgba(193, 126, 239, 0.5);
-}
-
-.fortune-list.memories a {
-  color: #7eafef;
-}
-
-.fortune-list.memories a:hover {
-  color: #9bc5f5;
-}
-
-.fortune-list.memories li {
-  border-bottom: 2px dashed #7eafef;
-}
-
-.fortune-list.wishes {
-  border-color: #c17eef;
-}
-
-.fortune-list.wishes h2 {
-  color: #c17eef;
-  text-shadow: 1px 1px rgba(126, 175, 239, 0.5);
-}
-
-.fortune-list.wishes a {
-  color: #c17eef;
-}
-
-.fortune-list.wishes a:hover {
-  color: #d19ef5;
-}
-
-.fortune-list.wishes li {
-  border-bottom: 2px dashed #c17eef;
+.bouncing-link {
+  position: absolute;
+  display: inline-block;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 4px;
+  /* color: white; */
+  font-size: 4rem;  /* Make emoji much bigger */
+  line-height: 1;   /* Keep the line height proportional */
+  user-select: none;
+  transition: all 0.2s ease;
 }

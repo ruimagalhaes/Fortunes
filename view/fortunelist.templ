@@ -1,0 +1,98 @@
+package view
+
+import (
+    "main/view/layout"
+    "main/model"
+)
+
+templ FortuneList(memories []model.Fortune, wishes []model.Fortune) {
+    @layout.Base() {
+        <div>
+            <div>
+                <a href="/fortunes/form?kind=memory" class="btn memories-btn">Add Memory</a>
+                <a href="/fortunes/form?kind=wish" class="btn wishes-btn">Add Wish</a>
+                <a href="/?opened=true" class="btn wishes-btn">Check Opened</a>
+            </div>
+            <div class="fortunes-container">
+                for _, fortune := range memories {
+                    // <div class="bouncing-element">
+                        <a href={templ.SafeURL("/fortunes/" + fortune.GetStrId())} class="bouncing-link memory-link">{ fortune.GetTitle() }</a>
+                    // </div>
+                }
+                for _, fortune := range wishes {
+                    // <div class="bouncing-element">
+                        <a href={templ.SafeURL("/fortunes/" + fortune.GetStrId())} class="bouncing-link wish-link">{ fortune.GetTitle() }</a>
+                    // </div>
+                }
+            </div>
+        </div>
+        <script>
+            const elements = [];
+            // Get existing bouncing elements
+            const existingElements = document.querySelectorAll('.bouncing-link');
+            existingElements.forEach(element => {
+                const rect = element.getBoundingClientRect();
+                // Random position
+                const x = Math.random() * (window.innerWidth - rect.width);
+                const y = Math.random() * (window.innerHeight - rect.height);
+                element.style.left = `${x}px`;
+                element.style.top = `${y}px`;
+                
+                // Random speed (1-5 pixels per frame)
+                const speed = (1 + Math.random() * 3) * (Math.random() > 0.5 ? 1 : -1);
+                const speedX = speed;
+                const speedY = speed;
+
+                elements.push({
+                    element,
+                    x,
+                    y,
+                    speedX,
+                    speedY,
+                    width: rect.width,
+                    height: rect.height
+                });
+            });
+        
+            // Animation loop
+            function animate() {
+                elements.forEach(item => {
+                    // Update position
+                    item.x += item.speedX;
+                    item.y += item.speedY;
+                    
+                    // Check for collisions with walls
+                    if (item.x <= 0 || item.x + item.width >= window.innerWidth) {
+                        item.speedX = -item.speedX;
+                    }
+                    
+                    if (item.y <= 0 || item.y + item.height >= window.innerHeight) {
+                        item.speedY = -item.speedY;
+                    }
+                    
+                    // Apply new position
+                    item.element.style.left = `${item.x}px`;
+                    item.element.style.top = `${item.y}px`;
+                });
+                
+                requestAnimationFrame(animate);
+            }
+            
+            // Start animation
+            animate();
+            
+            // Handle window resizing
+            window.addEventListener('resize', () => {
+                elements.forEach(item => {
+                    // Keep elements in bounds after resize
+                    if (item.x + item.width > window.innerWidth) {
+                        item.x = window.innerWidth - item.width;
+                    }
+                    if (item.y + item.height > window.innerHeight) {
+                        item.y = window.innerHeight - item.height;
+                    }
+                });
+            });
+        </script>
+    }
+}

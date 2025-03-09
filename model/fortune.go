@@ -131,7 +131,7 @@ func (a *Fortune) GetStrId() string {
 
 func (a *Fortune) GetTitle() string {
 	if a.Kind == KindWish {
-		return fmt.Sprintf("💫 Wish %d", a.Id)
+		return "✨"
 	}
-	return fmt.Sprintf("🕰️ Memory %d", a.Id)
+	return "🪂"
 }

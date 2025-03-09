@@ -46,7 +46,7 @@ func FortunesForm(kind model.FortuneKind) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"fortune-form\"><form action=\"")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div><form action=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -60,12 +60,12 @@ func FortunesForm(kind model.FortuneKind) templ.Component {
 				return templ_7745c5c3_Err
 			}
 			if kind == model.KindMemory {
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"form-group\"><label for=\"memory\">✨ Write Your Memory ✨</label> <textarea id=\"memory\" name=\"memory\" required placeholder=\"Share a special memory...\"></textarea></div>")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div><label for=\"memory\">✨ Write Your Memory ✨</label> <textarea id=\"memory\" name=\"memory\" required placeholder=\"Share a special memory...\"></textarea></div>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 			} else if kind == model.KindWish {
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"form-group\"><label for=\"wish\">✨ Make a Wish ✨</label> <textarea id=\"wish\" name=\"wish\" required placeholder=\"What do you wish for...\"></textarea></div>")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div><label for=\"wish\">✨ Make a Wish ✨</label> <textarea id=\"wish\" name=\"wish\" required placeholder=\"What do you wish for...\"></textarea></div>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
