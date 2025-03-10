@@ -31,7 +31,7 @@ func main() {
 	e.POST("/fortunes", fortunesHandler.HandlePostFortunes)
 	e.DELETE("/fortunes/", fortunesHandler.HandleDeleteFortunes)
 
-	e.Logger.Fatal(e.Start(":8080"))
+	e.Logger.Fatal(e.Start(":8082"))
 }
 
 func startDB() (*sql.DB, error) {
