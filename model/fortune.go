@@ -3,6 +3,7 @@ package model
 import (
 	"database/sql"
 	"fmt"
+	"math/rand"
 	"time"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -130,8 +131,11 @@ func (a *Fortune) GetStrId() string {
 }
 
 func (a *Fortune) GetTitle() string {
+	memoryEmojis := []string{"🦅", "🐝", "🦋", "🪂"}
+	wishEmojis := []string{"🛸", "🚀", "🛩️", "🚁"}
+
 	if a.Kind == KindWish {
-		return "✨"
+		return wishEmojis[rand.Intn(len(wishEmojis))]
 	}
-	return "🪂"
+	return memoryEmojis[rand.Intn(len(memoryEmojis))]
 }
