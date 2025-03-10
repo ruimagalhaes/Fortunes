@@ -9,8 +9,8 @@ templ FortuneList(memories []model.Fortune, wishes []model.Fortune) {
     @layout.Base() {
         <div>
             <div class="button-container">
-                <a href="/fortunes/form?kind=memory" class="btn">Add Memory</a>
-                <a href="/fortunes/form?kind=wish" class="btn">Add Wish</a>
+                <a href="/fortunes/form?kind=memory" class="btn">I remember...</a>
+                <a href="/fortunes/form?kind=wish" class="btn">I wish...</a>
             </div>
             <div class="bouncing-container">
                 for _, fortune := range memories {

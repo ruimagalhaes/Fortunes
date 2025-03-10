@@ -46,7 +46,7 @@ func FortuneList(memories []model.Fortune, wishes []model.Fortune) templ.Compone
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div><div class=\"button-container\"><a href=\"/fortunes/form?kind=memory\" class=\"btn\">Add Memory</a> <a href=\"/fortunes/form?kind=wish\" class=\"btn\">Add Wish</a></div><div class=\"bouncing-container\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div><div class=\"button-container\"><a href=\"/fortunes/form?kind=memory\" class=\"btn\">I remember...</a> <a href=\"/fortunes/form?kind=wish\" class=\"btn\">I wish...</a></div><div class=\"bouncing-container\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

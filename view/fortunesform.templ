@@ -11,17 +11,17 @@ templ FortunesForm(kind model.FortuneKind) {
             <form action={ templ.SafeURL("/fortunes") } method="POST">
                 if kind == model.KindMemory {
                     <div>
-                        <label for="memory">✨ Write Your Memory ✨</label>
-                        <textarea id="memory" name="memory" required placeholder="Share a special memory..."></textarea>
+                        <label for="memory">I remember...</label>
+                        <textarea id="memory" name="memory" required placeholder="every detail. The Germans wore gray, you wore blue."></textarea>
                     </div>
                 } else if kind == model.KindWish {
                     <div>
-                        <label for="wish">✨ Make a Wish ✨</label>
-                        <textarea id="wish" name="wish" required placeholder="What do you wish for..."></textarea>
+                        <label for="wish">I wish...</label>
+                        <textarea id="wish" name="wish" required placeholder="I may, I wish I might, Have this wish I wish tonight."></textarea>
                     </div>
                 }
                 <div class="button-container">
-                    <button type="submit" class="btn">Save Fortune</button>
+                    <button type="submit" class="btn">💾</button>
                 </div>
             </form>
         </div>
