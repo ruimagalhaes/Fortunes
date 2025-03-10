@@ -46,12 +46,12 @@ func FortuneList(memories []model.Fortune, wishes []model.Fortune) templ.Compone
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div><div><a href=\"/fortunes/form?kind=memory\" class=\"btn memories-btn\">Add Memory</a> <a href=\"/fortunes/form?kind=wish\" class=\"btn wishes-btn\">Add Wish</a> <a href=\"/?opened=true\" class=\"btn wishes-btn\">Check Opened</a></div><div class=\"fortunes-container\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div><div class=\"button-container\"><a href=\"/fortunes/form?kind=memory\" class=\"btn\">Add Memory</a> <a href=\"/fortunes/form?kind=wish\" class=\"btn\">Add Wish</a></div><div class=\"bouncing-container\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			for _, fortune := range memories {
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <a href=\"")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<a href=\"")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -67,19 +67,19 @@ func FortuneList(memories []model.Fortune, wishes []model.Fortune) templ.Compone
 				var templ_7745c5c3_Var4 string
 				templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(fortune.GetTitle())
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/fortunelist.templ`, Line: 19, Col: 137}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/fortunelist.templ`, Line: 17, Col: 133}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</a>")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</a> ")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 			}
 			for _, fortune := range wishes {
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <a href=\"")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<a href=\"")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -95,7 +95,7 @@ func FortuneList(memories []model.Fortune, wishes []model.Fortune) templ.Compone
 				var templ_7745c5c3_Var6 string
 				templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(fortune.GetTitle())
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/fortunelist.templ`, Line: 24, Col: 135}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/fortunelist.templ`, Line: 20, Col: 131}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 				if templ_7745c5c3_Err != nil {
@@ -106,7 +106,7 @@ func FortuneList(memories []model.Fortune, wishes []model.Fortune) templ.Compone
 					return templ_7745c5c3_Err
 				}
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div><script>\n            const elements = [];\n            // Get existing bouncing elements\n            const existingElements = document.querySelectorAll('.bouncing-link');\n            existingElements.forEach(element => {\n                const rect = element.getBoundingClientRect();\n                // Random position\n                const x = Math.random() * (window.innerWidth - rect.width);\n                const y = Math.random() * (window.innerHeight - rect.height);\n                element.style.left = `${x}px`;\n                element.style.top = `${y}px`;\n                \n                // Random speed (1-5 pixels per frame)\n                const speed = (1 + Math.random() * 3) * (Math.random() > 0.5 ? 1 : -1);\n                const speedX = speed;\n                const speedY = speed;\n\n                elements.push({\n                    element,\n                    x,\n                    y,\n                    speedX,\n                    speedY,\n                    width: rect.width,\n                    height: rect.height\n                });\n            });\n        \n            // Animation loop\n            function animate() {\n                elements.forEach(item => {\n                    // Update position\n                    item.x += item.speedX;\n                    item.y += item.speedY;\n                    \n                    // Check for collisions with walls\n                    if (item.x <= 0 || item.x + item.width >= window.innerWidth) {\n                        item.speedX = -item.speedX;\n                    }\n                    \n                    if (item.y <= 0 || item.y + item.height >= window.innerHeight) {\n                        item.speedY = -item.speedY;\n                    }\n                    \n                    // Apply new position\n                    item.element.style.left = `${item.x}px`;\n                    item.element.style.top = `${item.y}px`;\n                });\n                \n                requestAnimationFrame(animate);\n            }\n            \n            // Start animation\n            animate();\n            \n            // Handle window resizing\n            window.addEventListener('resize', () => {\n                elements.forEach(item => {\n                    // Keep elements in bounds after resize\n                    if (item.x + item.width > window.innerWidth) {\n                        item.x = window.innerWidth - item.width;\n                    }\n                    if (item.y + item.height > window.innerHeight) {\n                        item.y = window.innerHeight - item.height;\n                    }\n                });\n            });\n        </script>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div><script>\n            const elements = [];\n            // Get existing bouncing elements\n            const existingElements = document.querySelectorAll('.bouncing-link');\n            // Add a new bouncing element\n            existingElements.forEach(element => {\n                const rect = element.getBoundingClientRect();\n                // Random position\n                const x = Math.random() * (window.innerWidth - rect.width);\n                const y = Math.random() * (window.innerHeight - rect.height);\n                element.style.left = `${x}px`;\n                element.style.top = `${y}px`;\n                \n                // Random speed (1-5 pixels per frame)\n                const speed = (1 + Math.random() * 2) * (Math.random() > 0.5 ? 1 : -1);\n                const speedX = speed;\n                const speedY = speed;\n\n                elements.push({\n                    element,\n                    x,\n                    y,\n                    speedX,\n                    speedY,\n                    width: rect.width,\n                    height: rect.height\n                });\n            });\n        \n            // Animation loop\n            function animate() {\n                elements.forEach(item => {\n                    // Update position\n                    item.x += item.speedX;\n                    item.y += item.speedY;\n                    \n                    // Check for collisions with walls\n                    if (item.x <= 0 || item.x + item.width >= window.innerWidth) {\n                        item.speedX = -item.speedX;\n                    }\n                    \n                    if (item.y <= 0 || item.y + item.height >= window.innerHeight) {\n                        item.speedY = -item.speedY;\n                    }\n                    \n                    // Apply new position\n                    item.element.style.left = `${item.x}px`;\n                    item.element.style.top = `${item.y}px`;\n                });\n                \n                requestAnimationFrame(animate);\n            }\n            \n            // Start animation\n            animate();\n            \n            // Handle window resizing\n            window.addEventListener('resize', () => {\n                elements.forEach(item => {\n                    // Keep elements in bounds after resize\n                    if (item.x + item.width > window.innerWidth) {\n                        item.x = window.innerWidth - item.width;\n                    }\n                    if (item.y + item.height > window.innerHeight) {\n                        item.y = window.innerHeight - item.height;\n                    }\n                });\n            });\n        </script>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

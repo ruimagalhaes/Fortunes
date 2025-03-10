@@ -8,21 +8,16 @@ import (
 templ FortuneList(memories []model.Fortune, wishes []model.Fortune) {
     @layout.Base() {
         <div>
-            <div>
-                <a href="/fortunes/form?kind=memory" class="btn memories-btn">Add Memory</a>
-                <a href="/fortunes/form?kind=wish" class="btn wishes-btn">Add Wish</a>
-                <a href="/?opened=true" class="btn wishes-btn">Check Opened</a>
+            <div class="button-container">
+                <a href="/fortunes/form?kind=memory" class="btn">Add Memory</a>
+                <a href="/fortunes/form?kind=wish" class="btn">Add Wish</a>
             </div>
-            <div class="fortunes-container">
+            <div class="bouncing-container">
                 for _, fortune := range memories {
-                    // <div class="bouncing-element">
-                        <a href={templ.SafeURL("/fortunes/" + fortune.GetStrId())} class="bouncing-link memory-link">{ fortune.GetTitle() }</a>
-                    // </div>
+                    <a href={templ.SafeURL("/fortunes/" + fortune.GetStrId())} class="bouncing-link memory-link">{ fortune.GetTitle() }</a>
                 }
                 for _, fortune := range wishes {
-                    // <div class="bouncing-element">
-                        <a href={templ.SafeURL("/fortunes/" + fortune.GetStrId())} class="bouncing-link wish-link">{ fortune.GetTitle() }</a>
-                    // </div>
+                    <a href={templ.SafeURL("/fortunes/" + fortune.GetStrId())} class="bouncing-link wish-link">{ fortune.GetTitle() }</a>
                 }
             </div>
         </div>
@@ -30,6 +25,7 @@ templ FortuneList(memories []model.Fortune, wishes []model.Fortune) {
             const elements = [];
             // Get existing bouncing elements
             const existingElements = document.querySelectorAll('.bouncing-link');
+            // Add a new bouncing element
             existingElements.forEach(element => {
                 const rect = element.getBoundingClientRect();
                 // Random position
@@ -39,7 +35,7 @@ templ FortuneList(memories []model.Fortune, wishes []model.Fortune) {
                 element.style.top = `${y}px`;
                 
                 // Random speed (1-5 pixels per frame)
-                const speed = (1 + Math.random() * 3) * (Math.random() > 0.5 ? 1 : -1);
+                const speed = (1 + Math.random() * 2) * (Math.random() > 0.5 ? 1 : -1);
                 const speedX = speed;
                 const speedY = speed;
 

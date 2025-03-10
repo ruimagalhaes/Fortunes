@@ -7,11 +7,20 @@ import (
 
 templ Fortune(fortune model.Fortune) {
     @layout.Base() {
-        <div>
-            { fortune.Body }
-        </div>
-        <div>
-            <a href="/" class="btn">Back to Jars</a>
+        <div class="fortune-container">
+            <div class="fortune-content">
+                <h1 class="fortune-title">
+                    if fortune.Kind == model.KindWish {
+                        { "✨" }
+                    } else {
+                        { "🪂" }
+                    }
+                </h1>
+                <p class="fortune-text">{ fortune.Body }</p>
+                <div class="button-container">
+                    <a href="/" class="btn">Back to Jars</a>
+                </div>
+            </div>
         </div>
     }
 }
