@@ -52,9 +52,9 @@ func Fortune(fortune model.Fortune) templ.Component {
 			}
 			if fortune.Kind == model.KindWish {
 				var templ_7745c5c3_Var3 string
-				templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs("I remember...")
+				templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs("I wish...")
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/fortune.templ`, Line: 14, Col: 41}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/fortune.templ`, Line: 14, Col: 37}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 				if templ_7745c5c3_Err != nil {
@@ -62,9 +62,9 @@ func Fortune(fortune model.Fortune) templ.Component {
 				}
 			} else {
 				var templ_7745c5c3_Var4 string
-				templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs("I wish...")
+				templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs("I remember...")
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/fortune.templ`, Line: 16, Col: 37}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `view/fortune.templ`, Line: 16, Col: 41}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 				if templ_7745c5c3_Err != nil {

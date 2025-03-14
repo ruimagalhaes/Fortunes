@@ -11,9 +11,9 @@ templ Fortune(fortune model.Fortune) {
             <div class="fortune-content">
                 <h1 class="fortune-title">
                     if fortune.Kind == model.KindWish {
-                        { "I remember..." }
-                    } else {
                         { "I wish..." }
+                    } else {
+                        { "I remember..." }
                     }
                 </h1>
                 <p class="fortune-text">{ fortune.Body }</p>
